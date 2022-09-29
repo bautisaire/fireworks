@@ -1,6 +1,7 @@
 const gravity = .8;
 const numParticulas = 1;
-const minNumChilds = 80;
+const minNumChilds = 30;
+const maxNumChilds = 80;
 function start() {
     
     // let particulas = document.getElementsByClassName("particula");
@@ -40,7 +41,6 @@ function update() {
         particula.style.left = left + "px";
 
         let padre = particula.getAttribute("data-dad")
-        console.log(padre)
         if (velocidadY >= 0 && padre === "true") {
             boom(particula)
         }
@@ -53,7 +53,8 @@ function update() {
 }
 
 function boom(particula) {
-    let numChilds = Math.random() * minNumChilds + 10;
+    let numChilds = Math.random() * (maxNumChilds-minNumChilds+1) + minNumChilds-1;
+    console.log(numChilds)
     for (c = 0; c < numChilds; c++) {
         let child = document.createElement("div");
         child.className = "particula";
