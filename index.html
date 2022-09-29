@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fireworks</title>
+    <style>
+        .particula {
+            width: 6px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+            filter:saturate(2);
+        }
+        .particula[data-dad="false"]{
+            width: 4px;
+            height: 4px;
+        }
+        body {
+            overflow-y: hidden;
+            width: 100vw;
+            height: 100vh;
+            overflow-x: hidden;
+            background-image: url("https://images.alphacoders.com/966/966313.jpg");
+            background-color: rgb(2, 0, 36);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="particula" data-velocity-y="0" data-dad="true"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
