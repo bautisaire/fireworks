@@ -1,6 +1,6 @@
 const gravity = .8;
-const numParticulas = 1
-const numChilds = 50;
+const numParticulas = 1;
+const minNumChilds = 80;
 function start() {
     
     // let particulas = document.getElementsByClassName("particula");
@@ -53,6 +53,7 @@ function update() {
 }
 
 function boom(particula) {
+    let numChilds = Math.random() * minNumChilds + 10;
     for (c = 0; c < numChilds; c++) {
         let child = document.createElement("div");
         child.className = "particula";
