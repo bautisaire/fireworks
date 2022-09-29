@@ -2,14 +2,14 @@ const gravity = .8;
 const numParticulas = 1;
 const minNumChilds = 30;
 const maxNumChilds = 80;
-function start() {
+function start(event) {
     
     // let particulas = document.getElementsByClassName("particula");
     for (let p = 0; p < numParticulas; p++) {
         let particula = document.createElement("div");
         particula.className = "particula";
         let y = window.innerHeight;
-        let x = Math.random() * window.innerWidth;
+        let x = event.clientX;
         particula.style.left = x + "px";
         particula.style.top = y + "px";
         particula.style.background = getRandomColor();
@@ -85,6 +85,6 @@ function getRandomColor() {
 }
 
 window.onload = function () {
-    document.addEventListener("click",()=>start())
+    document.addEventListener("click",(event)=>start(event))
     update();
 }
