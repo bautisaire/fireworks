@@ -2,8 +2,11 @@ const gravity = .8;
 const numParticulas = 1;
 const minNumChilds = 30;
 const maxNumChilds = 80;
-
+let initialMessage = document.createElement("h1")
 function click(event) {
+        initialMessage.remove()
+   
+
     let soundStart = new Audio("start.mp3");
     soundStart.play();
     // let particulas = document.getElementsByClassName("particula");
@@ -57,7 +60,7 @@ function update() {
 function boom(particula) {
     let soundBoom = new Audio("boom.mp3");
     let soundSoft = new Audio("soft.mp3");
-    let numChilds = Math.random() * (maxNumChilds-minNumChilds+1) + minNumChilds-1;
+    let numChilds = Math.random() * (maxNumChilds - minNumChilds + 1) + minNumChilds - 1;
     numChilds < 45 ? soundSoft.play() : soundBoom.play()
     for (c = 0; c < numChilds; c++) {
         let child = document.createElement("div");
@@ -67,10 +70,10 @@ function boom(particula) {
         child.style.left = particula.style.left;
         child.style.background = particula.style.background;
         let velocidadY = (Math.random() * 10) - 8; // -8 y 2
-        let velocidadX = (Math.random() * 13) - 8; 
+        let velocidadX = (Math.random() * 13) - 8;
 
-        child.setAttribute("data-velocity-y",velocidadY)
-        child.setAttribute("data-velocity-x",velocidadX)
+        child.setAttribute("data-velocity-y", velocidadY)
+        child.setAttribute("data-velocity-x", velocidadX)
         document.getElementsByTagName("body")[0].append(child);
 
     }
@@ -87,19 +90,14 @@ function getRandomColor() {
     }
     return color;
 }
-function start(){
-    let initialMessage = document.createElement("h1")
-    initialMessage.textContent= "Press click";
+function start() {
+    initialMessage.textContent = "Press click";
     document.getElementsByTagName("body")[0].append(initialMessage)
-    
-    setTimeout(() =>{ 
-        initialMessage.className = "message"
-},20)
-    setTimeout(() => initialMessage.className = "outMessage",1000)
-    setTimeout(() => initialMessage.remove(),1500   )
+
+    setTimeout(() => initialMessage.className = "message", 20)
 }
 window.onload = function () {
     start()
-    document.addEventListener("click",(event)=>click(event))
+    document.addEventListener("click", (event) => click(event))
     update();
 }
