@@ -4,7 +4,8 @@ const minNumChilds = 30;
 const maxNumChilds = 80;
 
 function click(event) {
-    
+    let soundStart = new Audio("start.mp3");
+    soundStart.play();
     // let particulas = document.getElementsByClassName("particula");
     for (let p = 0; p < numParticulas; p++) {
         let particula = document.createElement("div");
@@ -54,7 +55,10 @@ function update() {
 }
 
 function boom(particula) {
+    let soundBoom = new Audio("boom.mp3");
+    let soundSoft = new Audio("soft.mp3");
     let numChilds = Math.random() * (maxNumChilds-minNumChilds+1) + minNumChilds-1;
+    numChilds < 45 ? soundSoft.play() : soundBoom.play()
     for (c = 0; c < numChilds; c++) {
         let child = document.createElement("div");
         child.className = "particula";
@@ -92,7 +96,7 @@ function start(){
         initialMessage.className = "message"
 },20)
     setTimeout(() => initialMessage.className = "outMessage",1000)
-    setTimeout(() => initialMessage.remove(),1500)
+    setTimeout(() => initialMessage.remove(),1500   )
 }
 window.onload = function () {
     start()
