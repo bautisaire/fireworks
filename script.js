@@ -2,7 +2,8 @@ const gravity = .8;
 const numParticulas = 1;
 const minNumChilds = 30;
 const maxNumChilds = 80;
-function start(event) {
+
+function click(event) {
     
     // let particulas = document.getElementsByClassName("particula");
     for (let p = 0; p < numParticulas; p++) {
@@ -54,7 +55,6 @@ function update() {
 
 function boom(particula) {
     let numChilds = Math.random() * (maxNumChilds-minNumChilds+1) + minNumChilds-1;
-    console.log(numChilds)
     for (c = 0; c < numChilds; c++) {
         let child = document.createElement("div");
         child.className = "particula";
@@ -83,8 +83,19 @@ function getRandomColor() {
     }
     return color;
 }
-
+function start(){
+    let initialMessage = document.createElement("h1")
+    initialMessage.textContent= "Press click";
+    document.getElementsByTagName("body")[0].append(initialMessage)
+    
+    setTimeout(() =>{ 
+        initialMessage.className = "message"
+},20)
+    setTimeout(() => initialMessage.className = "outMessage",1000)
+    setTimeout(() => initialMessage.remove(),1500)
+}
 window.onload = function () {
-    document.addEventListener("click",(event)=>start(event))
+    start()
+    document.addEventListener("click",(event)=>click(event))
     update();
 }
