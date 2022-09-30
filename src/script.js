@@ -2,12 +2,13 @@ const gravity = .8;
 const numParticulas = 1;
 const minNumChilds = 30;
 const maxNumChilds = 80;
+const frame = 20;
 let initialMessage = document.createElement("h1")
 function click(event) {
         initialMessage.remove()
    
 
-    let soundStart = new Audio("start.mp3");
+    let soundStart = new Audio("./src/start.mp3");
     soundStart.play();
     // let particulas = document.getElementsByClassName("particula");
     for (let p = 0; p < numParticulas; p++) {
@@ -54,12 +55,12 @@ function update() {
             particula.remove();
         }
     }
-    setTimeout(update, 20)
+    setTimeout(update, frame)
 }
 
 function boom(particula) {
-    let soundBoom = new Audio("boom.mp3");
-    let soundSoft = new Audio("soft.mp3");
+    let soundBoom = new Audio("./src/boom.mp3");
+    let soundSoft = new Audio("./src/soft.mp3");
     let numChilds = Math.random() * (maxNumChilds - minNumChilds + 1) + minNumChilds - 1;
     numChilds < 45 ? soundSoft.play() : soundBoom.play()
     for (c = 0; c < numChilds; c++) {
